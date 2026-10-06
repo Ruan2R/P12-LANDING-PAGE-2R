@@ -1,18 +1,29 @@
 # 2R Informática — Landing Page
 
-Case conceitual de uma landing page para uma empresa de suporte, manutenção e infraestrutura de TI.
+Projeto conceitual de uma landing page para uma empresa de tecnologia e suporte de TI.
 
-## Stack
-- HTML5 semântico
-- CSS3 responsivo
-- JavaScript vanilla
-- IBM Plex Sans
+## Status
+V4.8 — revisão responsiva mobile.
 
-## Estado do projeto
-A página é um projeto de portfólio. Interfaces, métricas e ambientes exibidos nos mockups são conceituais e não representam integrações reais.
+## Destaques
+- Landing page institucional responsiva.
+- Serviços de TI, infraestrutura e suporte.
+- Seção conceitual para soluções empresariais.
+- Formulário de contato com validação de frontend.
+- Navegação por âncoras e menu mobile.
+- Identidade visual baseada na marca 2R Informática.
+- Tipografia IBM Plex Sans.
+- Foco em responsividade, acessibilidade e acabamento visual.
+
+## Observação
+Os mockups e indicadores de interface apresentados na página são conceituais e fazem parte do case de portfólio.
 
 ## Estrutura
-- `index.html` — estrutura da página
-- `style.css` — estilos, responsividade e identidade visual
-- `script.js` — menu mobile, animações de entrada e validação demonstrativa do formulário
-- `assets/logo-2r.png` — logo usada no conceito
+- `index.html`
+- `style.css`
+- `script.js`
+- `assets/`
+
+
+### V4.9 — ajuste de ritmo mobile
+Redução do espaço vertical entre “TI para empresas” e “Sobre a 2R”, sem alterar o desktop.

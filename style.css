@@ -1224,7 +1224,7 @@ a {
 
 @media (max-width: 760px) {
   .services-section {
-    padding: 94px 0 88px;
+    padding: 94px 0 56px;
   }
 
   .section-heading {
@@ -1265,6 +1265,10 @@ a {
 }
 
 @media (max-width: 480px) {
+  .services-section {
+    padding-bottom: 48px;
+  }
+
   .service-card {
     padding: 22px;
   }
@@ -1705,7 +1709,7 @@ a {
 
 @media (max-width: 760px) {
   .business-section {
-    padding: 110px 0;
+    padding: 78px 0 54px;
   }
 
   .business-heading-row {
@@ -2247,9 +2251,9 @@ a {
   }
 
   .about-focus-item {
-    grid-template-columns: 36px minmax(0, 1fr);
-    gap: 14px;
-    padding: 15px 0;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    padding: 15px 0 15px 16px;
   }
 
   .about-focus-item strong {
@@ -2787,11 +2791,14 @@ a {
   }
 
   .process-card {
-    min-height: 250px;
+    min-height: 190px;
+    padding: 24px;
   }
 
   .process-icon {
-    margin-top: 40px;
+    margin-top: 0;
+    width: 44px;
+    height: 44px;
   }
 
   .contact-section {
@@ -2841,7 +2848,7 @@ a {
 @media (max-width: 480px) {
   .process-card {
     padding: 24px;
-    min-height: 235px;
+    min-height: 190px;
   }
 
   .contact-panel-top strong {
@@ -3884,7 +3891,7 @@ h1, h2, h3, h4, h5, h6,
   .difference-card,
   .difference-card-main {
     height: auto;
-    min-height: 230px;
+    min-height: 178px;
     padding: 24px;
   }
 }
@@ -4214,5 +4221,239 @@ section[id] {
   .nav-toggle span {
     transition: none !important;
     transform: none !important;
+  }
+}
+
+/* ==============================
+   V4.1 — Mobile parity & layout review
+   ============================== */
+@media (max-width: 480px) {
+  /* Keep the contact guidance visible on small screens. */
+  .contact-note {
+    display: flex;
+    margin-top: 28px;
+    padding-top: 16px;
+    gap: 10px;
+  }
+
+  .contact-note-mark {
+    width: 24px;
+    height: 24px;
+    flex-basis: 24px;
+    border-radius: 7px;
+    font-size: 11px;
+  }
+
+  .contact-note strong {
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  .contact-note p {
+    margin-top: 4px;
+    font-size: 10px;
+    line-height: 1.55;
+  }
+
+  /* The conceptual architecture uses the same content on mobile,
+     but the nodes need more breathing room at phone widths. */
+  .architecture-map {
+    min-height: 252px;
+  }
+
+  .architecture-node {
+    width: 105px;
+    min-height: 52px;
+    gap: 7px;
+    padding: 8px 9px;
+    border-radius: 12px;
+  }
+
+  .node-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    font-size: 13px;
+  }
+
+  .architecture-node strong {
+    font-size: 10px;
+  }
+
+  .architecture-node small {
+    font-size: 7px;
+  }
+
+  .node-network { left: 0; top: 4px; }
+  .node-servers { right: 0; top: 4px; }
+  .node-devices { left: 0; bottom: 4px; }
+  .node-support { right: 0; bottom: 4px; }
+
+  .architecture-core {
+    width: 96px;
+    min-height: 70px;
+    border-radius: 15px;
+  }
+
+  .architecture-core strong {
+    font-size: 19px;
+  }
+}
+
+/* ==============================
+   V4.6 — Mobile density correction
+   ============================== */
+@media (max-width: 760px) {
+  /* Keep stacked cards compact when they no longer share a desktop row height. */
+  .difference-card,
+  .difference-card-main,
+  .difference-card:nth-child(4) {
+    min-height: 208px;
+    height: auto;
+    padding: 22px;
+  }
+
+  .difference-icon {
+    margin-top: 0;
+  }
+
+  .difference-card h4,
+  .difference-card-main h4 {
+    margin-top: 22px;
+  }
+
+  .difference-card p,
+  .difference-card-main p {
+    margin-top: 9px;
+  }
+
+  .differentiators {
+    margin-top: 72px;
+  }
+
+  /* The process cards were inheriting a later 286px desktop height.
+     On mobile they should size for their content instead. */
+  .process-card {
+    min-height: 190px;
+    height: auto;
+    padding: 24px;
+  }
+
+  .process-icon {
+    margin-top: 0;
+    width: 44px;
+    height: 44px;
+  }
+
+  .process-card h3 {
+    margin-top: 18px;
+  }
+
+  .process-card p {
+    margin-top: 9px;
+  }
+
+  .process-section {
+    padding: 92px 0 84px;
+  }
+}
+
+@media (max-width: 480px) {
+  .difference-card,
+  .difference-card-main,
+  .difference-card:nth-child(4) {
+    min-height: 0;
+  }
+
+  .process-card {
+    min-height: 0;
+  }
+}
+
+/* ==============================
+   V4.7 — Mobile spacing refinement
+   ============================== */
+@media (max-width: 760px) {
+  .about-section {
+    padding-bottom: 72px;
+  }
+
+  .process-grid {
+    margin-top: 34px;
+  }
+
+  .process-section {
+    padding-bottom: 76px;
+  }
+}
+
+/* ==============================
+   V4.8 — Mobile contact layout repair
+   ============================== */
+@media (max-width: 760px) {
+  .contact-layout {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 38px;
+  }
+
+  .contact-copy,
+  .contact-panel {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+  }
+
+  .contact-copy h2,
+  .contact-copy > p,
+  .contact-highlights,
+  .contact-note {
+    max-width: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-note {
+    display: flex;
+  }
+
+  .contact-section {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .contact-panel {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .contact-panel-top {
+    gap: 12px;
+  }
+
+  .contact-panel-top img {
+    flex: 0 0 auto;
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea,
+  .contact-submit {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+
+/* ==============================
+   V4.9 — Mobile section rhythm
+   ============================== */
+@media (max-width: 760px) {
+  /* Keep the transition from the business section into About compact on mobile. */
+  .business-section {
+    padding-bottom: 54px;
+  }
+
+  .about-section {
+    padding-top: 72px;
   }
 }
