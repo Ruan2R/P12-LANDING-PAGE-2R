@@ -13,41 +13,62 @@ function updateHeader() {
 window.addEventListener('scroll', updateHeader, { passive: true });
 updateHeader();
 
+function setMenu(open) {
+  if (!navToggle || !mainNav) return;
+
+  mainNav.classList.toggle('open', open);
+  navToggle.setAttribute('aria-expanded', String(open));
+  navToggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+  document.body.classList.toggle('menu-open', open);
+}
+
 navToggle?.addEventListener('click', () => {
-  const isOpen = mainNav?.classList.toggle('open') ?? false;
-  navToggle.setAttribute('aria-expanded', String(isOpen));
-  navToggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+  const isOpen = mainNav?.classList.contains('open') ?? false;
+  setMenu(!isOpen);
 });
 
 navLinks.forEach((link) => {
-  link.addEventListener('click', () => {
-    mainNav?.classList.remove('open');
-    navToggle?.setAttribute('aria-expanded', 'false');
-    navToggle?.setAttribute('aria-label', 'Abrir menu');
-  });
+  link.addEventListener('click', () => setMenu(false));
 });
 
-const observer = new IntersectionObserver(
-  (entries, currentObserver) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('is-visible');
-      currentObserver.unobserve(entry.target);
-    });
-  },
-  { threshold: 0.12 }
-);
+document.addEventListener('click', (event) => {
+  if (!mainNav?.classList.contains('open')) return;
+  const target = event.target;
+  if (!(target instanceof Node)) return;
+  if (mainNav.contains(target) || navToggle?.contains(target)) return;
+  setMenu(false);
+});
 
-revealElements.forEach((element) => observer.observe(element));
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') setMenu(false);
+});
 
+const observer = 'IntersectionObserver' in window
+  ? new IntersectionObserver(
+      (entries, currentObserver) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          currentObserver.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12 }
+    )
+  : null;
 
-// Formulario demonstrativo: valida a experiência no front-end sem enviar dados.
+if (observer) {
+  revealElements.forEach((element) => observer.observe(element));
+} else {
+  revealElements.forEach((element) => element.classList.add('is-visible'));
+}
+
 const contactForm = document.querySelector('.contact-form');
 const formStatus = document.querySelector('.form-status');
 
 if (contactForm && formStatus) {
   contactForm.addEventListener('submit', (event) => {
     event.preventDefault();
+    formStatus.textContent = '';
 
     if (!contactForm.checkValidity()) {
       contactForm.reportValidity();
